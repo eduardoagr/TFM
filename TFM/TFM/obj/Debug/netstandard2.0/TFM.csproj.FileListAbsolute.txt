@@ -1,0 +1,14 @@
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\bin\Debug\netstandard2.0\TFM.deps.json
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\bin\Debug\netstandard2.0\TFM.dll
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\bin\Debug\netstandard2.0\ref\TFM.dll
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\bin\Debug\netstandard2.0\TFM.pdb
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\TFM.csprojAssemblyReference.cache
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\TFM.AssemblyInfoInputs.cache
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\TFM.AssemblyInfo.cs
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\TFM.csproj.CoreCompileInputs.cache
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\TFM.dll
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\ref\TFM.dll
+C:\Users\egome\Documents\GitRepos\TFM\TFM\TFM\obj\Debug\netstandard2.0\TFM.pdb

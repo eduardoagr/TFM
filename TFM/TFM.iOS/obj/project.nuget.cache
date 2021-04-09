@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "8boKNrHt/vhRAa4sEGSHLvo/6uhiaOuxHj6BoUZi9qn6jcXF6ndaRaHthvvEcy2JpqtX3KM1/ceakbZ7j3TF+A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\egome\\Documents\\GitRepos\\TFM\\TFM\\TFM.iOS\\TFM.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\egome\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\egome\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\egome\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Users\\egome\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}
