@@ -70,8 +70,8 @@ namespace sqltest {
                         Ingredient ingredient = new Ingredient() {
                             id = new Guid().ToString(),
                             name = text,
-                            createdAt = DateTime.Now,
-                            updatedAt = DateTime.Now,
+                            createdAt = DateTime.Today,
+                            updatedAt = DateTime.Today,
                             deleted = false,
                             version = "1"
                         };
@@ -82,8 +82,8 @@ namespace sqltest {
             ingredients.Add(new Ingredient() {
                 id = new Guid().ToString(),
                 name = "00 Flour",
-                createdAt = DateTime.Now,
-                updatedAt = DateTime.Now,
+                createdAt = DateTime.Today,
+                updatedAt = DateTime.Today,
                 deleted = false,
                 version = "1"
             });
