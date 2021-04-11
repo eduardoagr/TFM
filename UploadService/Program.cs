@@ -25,19 +25,19 @@ namespace sqltest {
                     InitialCatalog = "XamContactDb"
                 };
 
-                var cmdText = @"insert into dbo.Ingredients (id, name, version, createdAt, updatedAt, deleted) values (@id, @name, @version, @createdAt, @updatedAt @deleted)";
+                var cmdText = @"insert into dbo.Ingredients (name, id, version, createdAt, updatedAt, deleted) values (@name, @id, @createdAt, @updatedAt, @updatedAt @deleted)";
 
                 foreach (var item in MakeIngridientsList()) {
 
                     using (SqlConnection conn = new SqlConnection(strngbuilder.ConnectionString)) {
 
                         var command = new SqlCommand(cmdText, conn);
-                        command.Parameters.AddWithValue("@id", item.id);
                         command.Parameters.AddWithValue("@name", item.name);
-                        command.Parameters.AddWithValue("@deleted", item.deleted);
+                        command.Parameters.AddWithValue("@id", item.id);
                         command.Parameters.AddWithValue("@version", item.version);
                         command.Parameters.AddWithValue("@createdAt", item.createdAt);
                         command.Parameters.AddWithValue("@updatedAt", item.updatedAt);
+                        command.Parameters.AddWithValue("@deleted", item.deleted);
                         conn.Open();
                         command.ExecuteNonQuery();
                         Console.WriteLine("Ok");
