@@ -15,41 +15,40 @@ namespace sqltest {
     class Program {
         static void Main(string[] args) {
             string API = "http://xamxontacts.azurewebsites.net/tables/ingredients?ZUMO-API-VERSION=2.0.0";
+            //SendDataToServerAsync(API);
+            try {
 
-            foreach (var item in MakeIngridientsList()) {
+                SqlConnectionStringBuilder strngbuilder = new SqlConnectionStringBuilder {
+                    DataSource = "xamserver.database.windows.net",
+                    UserID = "edu123",
+                    Password = "Password123",
+                    InitialCatalog = "XamContactDb"
+                };
 
-                Console.WriteLine(item.name);
+                var cmdText = @"insert into dbo.Ingredients (id, name, version, createdAt, updatedAt, deleted) values (@id, @name, @version, @createdAt, @updatedAt @deleted)";
+
+                foreach (var item in MakeIngridientsList()) {
+
+                    using (SqlConnection conn = new SqlConnection(strngbuilder.ConnectionString)) {
+
+                        var command = new SqlCommand(cmdText, conn);
+                        command.Parameters.AddWithValue("@id", item.id);
+                        command.Parameters.AddWithValue("@name", item.name);
+                        command.Parameters.AddWithValue("@deleted", item.deleted);
+                        command.Parameters.AddWithValue("@version", item.version);
+                        command.Parameters.AddWithValue("@createdAt", item.createdAt);
+                        command.Parameters.AddWithValue("@updatedAt", item.updatedAt);
+                        conn.Open();
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Ok");
+                    }
+                }
+            } catch (SqlException e) {
+                Console.WriteLine(e.ToString());
             }
-            //    try {
-            //        SqlConnectionStringBuilder strngbuilder = new SqlConnectionStringBuilder {
-            //            DataSource = "xamserver.database.windows.net",
-            //            UserID = "edu123",
-            //            Password = "Password123",
-            //            InitialCatalog = "XamContactDb"
-            //        };
-
-            //        var cmdText = @"insert into dbo.Ingredients (id, name, version, deleted) values (@id, @name, @version, @deleted)";
-
-            //        foreach (var item in MakeIngridientsList()) {
-
-            //            using (SqlConnection conn = new SqlConnection(strngbuilder.ConnectionString)) {
-
-            //                var command = new SqlCommand(cmdText, conn);
-            //                command.Parameters.AddWithValue("@id", item.id);
-            //                command.Parameters.AddWithValue("@name", item.name);
-            //                command.Parameters.AddWithValue("@deleted", item.deleted);
-            //                command.Parameters.AddWithValue("@version", item.version);
-            //                conn.Open();
-            //                command.ExecuteNonQuery();
-            //                Console.WriteLine("Ok");
-            //            }
-            //        }
-            //    } catch (SqlException e) {
-            //        Console.WriteLine(e.ToString());
-            //    }
-            //    Console.ReadLine();
-            //}
+            Console.ReadLine();
         }
+
 
         private static List<Ingredient> MakeIngridientsList() {
             List<Ingredient> ingredients = new();
@@ -77,7 +76,9 @@ namespace sqltest {
                             id = new Guid().ToString(),
                             name = text,
                             deleted = false,
-                            version = "1"
+                            version = "1",
+                            createdAt = DateTime.Now,
+                            updatedAt = DateTime.Now
                         };
                         ingredients.Add(ingredient);
                     }
@@ -87,7 +88,10 @@ namespace sqltest {
                 id = new Guid().ToString(),
                 name = "00 Flour",
                 deleted = false,
-                version = "1"
+                version = "1",
+                createdAt = DateTime.Now,
+                updatedAt = DateTime.Now
+
             });
             return ingredients;
         }
@@ -102,8 +106,6 @@ namespace sqltest {
             if (result.IsSuccessStatusCode) {
                 Console.WriteLine("Success");
             }
-
-
         }
     }
 }
