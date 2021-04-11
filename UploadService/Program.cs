@@ -25,7 +25,7 @@ namespace sqltest {
                     InitialCatalog = "XamContactDb"
                 };
 
-                var cmdText = @"insert into dbo.Ingredients (name, id, version, createdAt, updatedAt, deleted) values (@name, @id, @createdAt, @updatedAt, @updatedAt @deleted)";
+                var cmdText = @"insert into dbo.Ingredients (name, id, version, createdAt, updatedAt, deleted) values (@name, @id, @version, @updatedAt, @updatedAt, @deleted)";
 
                 foreach (var item in MakeIngridientsList()) {
 
