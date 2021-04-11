@@ -15,36 +15,42 @@ namespace sqltest {
     class Program {
         static void Main(string[] args) {
             string API = "http://xamxontacts.azurewebsites.net/tables/ingredients?ZUMO-API-VERSION=2.0.0";
-            try {
-                SqlConnectionStringBuilder strngbuilder = new SqlConnectionStringBuilder {
-                    DataSource = "xamserver.database.windows.net",
-                    UserID = "edu123",
-                    Password = "Password123",
-                    InitialCatalog = "XamContactDb"
-                };
 
-                var cmdText = @"insert into dbo.Ingredients (id, name, version, createdAt, updatedAt, deleted) values (@id, @name, @version, @createdAt, @updatedAt, @deleted)";
+            foreach (var item in MakeIngridientsList()) {
 
-                foreach (var item in MakeIngridientsList()) {
-
-                    using (SqlConnection conn = new SqlConnection(strngbuilder.ConnectionString)) {
-
-                        var command = new SqlCommand(cmdText, conn);
-                        command.Parameters.AddWithValue("@id", item.id);
-                        command.Parameters.AddWithValue("@name", item.name);
-                        command.Parameters.AddWithValue("@createdAt", item.createdAt);
-                        command.Parameters.AddWithValue("@updatedAt", item.updatedAt);
-                        command.Parameters.AddWithValue("@deleted", item.deleted);
-                        command.Parameters.AddWithValue("@version", item.version);
-                        conn.Open();
-                        command.ExecuteNonQuery();
-                    }
-                }
-            } catch (SqlException e) {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine(item.name);
             }
-            Console.ReadLine();
+            //    try {
+            //        SqlConnectionStringBuilder strngbuilder = new SqlConnectionStringBuilder {
+            //            DataSource = "xamserver.database.windows.net",
+            //            UserID = "edu123",
+            //            Password = "Password123",
+            //            InitialCatalog = "XamContactDb"
+            //        };
+
+            //        var cmdText = @"insert into dbo.Ingredients (id, name, version, deleted) values (@id, @name, @version, @deleted)";
+
+            //        foreach (var item in MakeIngridientsList()) {
+
+            //            using (SqlConnection conn = new SqlConnection(strngbuilder.ConnectionString)) {
+
+            //                var command = new SqlCommand(cmdText, conn);
+            //                command.Parameters.AddWithValue("@id", item.id);
+            //                command.Parameters.AddWithValue("@name", item.name);
+            //                command.Parameters.AddWithValue("@deleted", item.deleted);
+            //                command.Parameters.AddWithValue("@version", item.version);
+            //                conn.Open();
+            //                command.ExecuteNonQuery();
+            //                Console.WriteLine("Ok");
+            //            }
+            //        }
+            //    } catch (SqlException e) {
+            //        Console.WriteLine(e.ToString());
+            //    }
+            //    Console.ReadLine();
+            //}
         }
+
         private static List<Ingredient> MakeIngridientsList() {
             List<Ingredient> ingredients = new();
             var web = new HtmlWeb();
@@ -70,8 +76,6 @@ namespace sqltest {
                         Ingredient ingredient = new Ingredient() {
                             id = new Guid().ToString(),
                             name = text,
-                            createdAt = DateTime.Today,
-                            updatedAt = DateTime.Today,
                             deleted = false,
                             version = "1"
                         };
@@ -82,8 +86,6 @@ namespace sqltest {
             ingredients.Add(new Ingredient() {
                 id = new Guid().ToString(),
                 name = "00 Flour",
-                createdAt = DateTime.Today,
-                updatedAt = DateTime.Today,
                 deleted = false,
                 version = "1"
             });
